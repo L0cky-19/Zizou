@@ -1,0 +1,214 @@
+/* ====================================
+   Définition des couleurs
+   ==================================== */
+   :root {
+    --couleur-primaire: #FFB300;  /* Jaune */
+    --couleur-secondaire: #FF6600; /* Orange */
+    --couleur-sombre: #333333;     /* Gris foncé */
+    --couleur-claire: #FFFFFF;    /* Blanc */
+    --couleur-fond: #000000;      /* Noir */
+    --couleur-navbar: #1a1a1a;    /* Gris noir */
+}
+
+/* ====================================
+   Navbar fixe
+   ==================================== */
+.navbar {
+    background-color: var(--couleur-navbar);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed; /* Fixe la navbar en haut */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Assure que la navbar est au-dessus du reste du contenu */
+}
+
+.nav-header {
+    font-size: 2.4rem;
+    color: var(--couleur-primaire);
+    margin-right: auto; /* Pour aligner le texte de la navbar à gauche */
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: var(--couleur-claire);
+    font-size: 1.6rem;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--couleur-primaire);
+}
+
+/* ====================================
+   Menu utilisateur
+   ==================================== */
+.user-menu {
+    position: relative;
+}
+
+.user-name {
+    background-color: var(--couleur-primaire);
+    color: var(--couleur-fond);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--couleur-sombre);
+    border: 1px solid var(--couleur-primaire);
+    border-radius: 5px;
+    display: none;
+    flex-direction: column;
+    min-width: 180px;
+}
+
+.user-dropdown.active {
+    display: flex;
+}
+
+.dropdown-link {
+    padding: 10px;
+    color: var(--couleur-claire);
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s ease;
+}
+
+.dropdown-link:hover {
+    background-color: var(--couleur-primaire);
+    color: var(--couleur-fond);
+}
+
+/* ====================================
+   Formulaire de connexion fixé à la droite
+   ==================================== */
+#loginForm {
+    background-color: var(--couleur-navbar); /* Fond gris foncé */
+    color: var(--couleur-claire); /* Texte blanc */
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    position: fixed;
+    top: 12%;
+    right: 0;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+/* Fenêtre de connexion visible */
+#loginForm.active {
+    display: block;
+}
+
+/* ====================================
+   Champs de texte (email et mot de passe)
+   ==================================== */
+#loginForm input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: var(--couleur-sombre); /* Fond gris foncé */
+    color: var(--couleur-claire); /* Texte blanc */
+    border: 1px solid var(--couleur-primaire); /* Bordure jaune pour le contraste */
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* ====================================
+   Style pour le bouton de connexion
+   ==================================== */
+#loginButton {
+    background-color: var(--couleur-primaire); /* Jaune */
+    color: var(--couleur-fond); /* Texte noir */
+    border: none;
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Effet au survol */
+#loginButton:hover {
+    background-color: var(--couleur-secondaire); /* Orange au survol */
+    transform: scale(1.05); /* Effet de zoom léger */
+}
+
+/* Bouton désactivé (si jamais il est désactivé dans un autre contexte) */
+#loginButton:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+}
+
+/* ====================================
+   SUBMIT
+   ==================================== */
+
+/* Style du bouton de soumission */
+#loginForm button[type="submit"] {
+    background-color: var(--couleur-primaire); /* Jaune */
+    color: var(--couleur-fond); /* Texte noir */
+    border: none;
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Effet au survol */
+#loginForm button[type="submit"]:hover {
+    background-color: var(--couleur-secondaire); /* Orange au survol */
+    transform: scale(1.05); /* Effet de zoom léger */
+}
+
+/* Bouton désactivé (si jamais il est désactivé) */
+#loginForm button[type="submit"]:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+}
+
+/* ====================================
+   Message d'erreur
+   ==================================== */
+.error-message {
+    color: var(--couleur-secondaire);
+    font-size: 0.9rem;
+}
+
+/* ====================================
+   Ajustement du corps de la page pour ne pas cacher la navbar
+   ==================================== */
+body {
+    padding-top: 100px; /* Ajuste la hauteur en fonction de la taille de ta navbar */
+}

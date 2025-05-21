@@ -1,0 +1,68 @@
+/* ====================================
+   Définition des couleurs
+   ==================================== */
+   :root {
+    --couleur-primaire: #FFB300;  /* Jaune */
+    --couleur-secondaire: #FF6600; /* Orange */
+    --couleur-sombre: #333333;     /* Gris foncé */
+    --couleur-claire: #FFFFFF;    /* Blanc */
+    --couleur-fond: #000000;      /* Noir */
+}
+
+/* ====================================
+   Section générale
+   ==================================== */
+.section {
+    background: var(--couleur-fond);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--couleur-secondaire);
+}
+
+.section-title {
+    color: var(--couleur-primaire);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.section-text {
+    color: #ddd;
+}
+
+/* ====================================
+   Formulaires
+   ==================================== */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-label {
+    color: var(--couleur-primaire);
+    font-weight: bold;
+}
+
+.form-input {
+    padding: 10px;
+    border: 1px solid var(--couleur-primaire);
+    background: var(--couleur-primaire);
+    color: var(--couleur-primaire);
+    border-radius: 5px;
+}
+
+.form-button {
+    background: var(--couleur-primaire);
+    color: var(--couleur-primaire);
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.form-button:hover {
+    background: var(--couleur-primaire);
+}

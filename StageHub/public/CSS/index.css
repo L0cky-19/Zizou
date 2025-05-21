@@ -1,0 +1,207 @@
+/* Définition des couleurs */
+:root {
+    --couleur-primaire: #FFB300;  /* Jaune */
+    --couleur-secondaire: #FF6600; /* Orange */
+    --couleur-sombre: #333333;     /* Gris foncé */
+    --couleur-claire: #FFFFFF;    /* Blanc */
+    --couleur-fond: #000000;      /* Noir */
+}
+
+/* ====================================
+   Style global (structure de base)
+   ==================================== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--couleur-fond);
+    color: var(--couleur-claire);
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: var(--couleur-primaire);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--couleur-secondaire);
+}
+
+/* ====================================
+   Footer (Pied de page)
+   ==================================== */
+footer {
+    background-color: var(--couleur-sombre);
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-text {
+    color: var(--couleur-claire);
+}
+
+.footer-link {
+    color: var(--couleur-primaire);
+}
+
+.footer-link:hover {
+    color: var(--couleur-secondaire);
+}
+
+/* ====================================
+   Navbar (Menu de navigation)
+   ==================================== */
+nav {
+    background-color: var(--couleur-sombre);
+    padding: 15px;
+}
+
+nav a {
+    color: var(--couleur-claire);
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--couleur-primaire);
+}
+
+/* ====================================
+   Contenu principal
+   ==================================== */
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--couleur-fond); /* Fond noir */
+    color: var(--couleur-claire); /* Texte blanc */
+}
+
+/* ====================================
+   Section description
+   ==================================== */
+.description {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.title-description {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--couleur-primaire);
+    margin-bottom: 15px;
+}
+
+.text-description {
+    font-size: 1.2rem;
+    color: var(--couleur-claire);
+}
+
+/* ====================================
+   Statistiques
+   ==================================== */
+.stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.stat-item {
+    background-color: var(--couleur-sombre);
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--couleur-claire);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    flex: 1;
+    max-width: 300px;
+    text-align: center;
+}
+
+.stat-item:hover {
+    transform: scale(1.05);
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--couleur-primaire);
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 1rem;
+}
+
+
+/* ====================================
+   Images et liens (présentation visuelle)
+   ==================================== */
+.images-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+.image-link {
+    text-align: center;
+    display: block;
+    color: var(--couleur-claire);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.image-link:hover {
+    transform: scale(1.05);
+}
+
+.image-link-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.image-link:hover .image-link-img {
+    transform: scale(1.1);
+}
+
+.image-link-text {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: var(--couleur-claire);
+    transition: color 0.3s ease;
+}
+
+.image-link:hover .image-link-text {
+    color: var(--couleur-secondaire);
+    transform: translateY(-5px);
+}
+
+
+/* ====================================
+   Pagination (navigation entre pages)
+   ==================================== */
+.pagination button {
+    padding: 10px 20px;
+    background-color: var(--couleur-primaire); /* Jaune */
+    border: none;
+    border-radius: 5px;
+    color: var(--couleur-claire);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+    background-color: var(--couleur-secondaire); /* Orange au survol */
+}
+
+.pagination button:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+}

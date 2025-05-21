@@ -1,0 +1,74 @@
+/* Conteneur principal de la whishlist */
+.whishlist-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Élément individuel de la whishlist */
+.whishlist-item {
+    background-color: #282828;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 800px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #444;
+}
+
+.whishlist-item:hover {
+    transform: translateY(-5px);
+    background-color: #353535;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.whishlist-item h3 {
+    font-size: 1.8em;
+    color: #f39c12;
+    margin-bottom: 10px;
+}
+
+.whishlist-item p {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #f1c40f;
+}
+
+.whishlist-item strong {
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Bouton de suppression */
+.remove-btn {
+    background-color: #c0392b;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin-left: auto;
+}
+
+.remove-btn:hover {
+    background-color: #e74c3c;
+}
+
+/* Responsiveness pour petits écrans */
+@media (max-width: 768px) {
+    .whishlist-container {
+        padding: 10px;
+    }
+
+    .whishlist-item {
+        width: 90%;
+    }
+}
