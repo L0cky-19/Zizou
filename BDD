@@ -1,0 +1,105 @@
+-- Création de la table Users
+CREATE TABLE Users (
+    ID_User INT AUTO_INCREMENT,
+    Prenom VARCHAR(100) NOT NULL,
+    Nom VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    MotDePasse VARCHAR(100) NOT NULL,
+    Role VARCHAR(50) NOT NULL,
+    PRIMARY KEY (ID_User)
+);
+
+-- Création de la table Entreprises
+CREATE TABLE Entreprises (
+    ID_Entreprise INT AUTO_INCREMENT,
+    Nom VARCHAR(100) NOT NULL,
+    Description VARCHAR(3000),
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    Telephone VARCHAR(15) NOT NULL UNIQUE,
+    Note DECIMAL(2,1) NOT NULL DEFAULT 0 CHECK (Note BETWEEN 0 AND 5), -- Colonne Note
+    PRIMARY KEY (ID_Entreprise)
+);
+
+-- Création de la table Offres
+CREATE TABLE Offres (
+    ID_Offre INT AUTO_INCREMENT,
+    Titre VARCHAR(300) NOT NULL,
+    Date_Debut DATE NOT NULL,
+    Date_Fin DATE NOT NULL,
+    Description VARCHAR(3000),
+    Remuneration DECIMAL(10,2) NOT NULL,
+    ID_Entreprise INT NOT NULL,
+    PRIMARY KEY (ID_Offre),
+    FOREIGN KEY (ID_Entreprise) REFERENCES Entreprises(ID_Entreprise) ON DELETE CASCADE
+);
+
+-- Création de la table Candidatures
+CREATE TABLE Candidatures (
+    ID_Candidature INT AUTO_INCREMENT,
+    Date_Candidature DATE NOT NULL,
+    CV_Chemin VARCHAR(255) NOT NULL,
+    Chemin_Lettre_Motivation VARCHAR(255),
+    ID_Offre INT,
+    ID_User INT NOT NULL,
+    PRIMARY KEY (ID_Candidature),
+    FOREIGN KEY (ID_Offre) REFERENCES Offres(ID_Offre) ON DELETE CASCADE,
+    FOREIGN KEY (ID_User) REFERENCES Users(ID_User) ON DELETE CASCADE
+);
+
+-- Création de la table WishLists
+CREATE TABLE WishLists (
+    ID_WishList INT AUTO_INCREMENT,
+    ID_User INT NOT NULL,
+    ID_Offre INT,
+    PRIMARY KEY (ID_WishList),
+    UNIQUE (ID_User),
+    FOREIGN KEY (ID_User) REFERENCES Users(ID_User) ON DELETE CASCADE,
+    FOREIGN KEY (ID_Offre) REFERENCES Offres(ID_Offre) ON DELETE CASCADE
+);
+
+-- Création de la table Evaluations
+CREATE TABLE Evaluations (
+    ID_Evaluation INT AUTO_INCREMENT,
+    Note INT NOT NULL CHECK (Note BETWEEN 1 AND 5),
+    Commentaire VARCHAR(300),
+    ID_User INT NOT NULL,
+    ID_Entreprise INT NOT NULL,
+    PRIMARY KEY (ID_Evaluation),
+    FOREIGN KEY (ID_User) REFERENCES Users(ID_User) ON DELETE CASCADE,
+    FOREIGN KEY (ID_Entreprise) REFERENCES Entreprises(ID_Entreprise) ON DELETE CASCADE
+);
+
+
+-- Peuplement de la table Users
+INSERT INTO Users (Prenom, Nom, Email, MotDePasse, Role) VALUES
+('Alice', 'Dupont', 'alice.dupont@example.com', MD5('password'), 'user'),
+('Bob', 'Martin', 'bob.martin@example.com', MD5('password'), 'user'),
+('Caroline', 'Durand', 'caroline.durand@example.com', MD5('password'), 'admin');
+
+-- Peuplement de la table Entreprises
+INSERT INTO Entreprises (Nom, Description, Email, Telephone, Note) VALUES
+('TechCorp', 'Entreprise spécialisée dans les technologies innovantes.', 'contact@techcorp.com', '0123456789', 4.5),
+('GreenSolutions', 'Solutions écologiques pour un avenir durable.', 'info@greensolutions.com', '0987654321', 3.8),
+('EduSmart', 'Plateforme éducative pour l\'apprentissage en ligne.', 'support@edusmart.com', '0147852369', 4.2);
+
+-- Peuplement de la table Offres
+INSERT INTO Offres (Titre, Date_Debut, Date_Fin, Description, Remuneration, ID_Entreprise) VALUES
+('Développeur Web', '2025-04-01', '2025-09-30', 'Stage de développement web avec des technologies modernes.', 1200.00, 1),
+('Chargé de projet écologique', '2025-05-15', '2025-11-15', 'Stage pour gérer des projets environnementaux innovants.', 1000.00, 2),
+('Assistant pédagogique', '2025-03-01', '2025-08-31', 'Aider à développer des ressources pédagogiques pour la plateforme.', 800.00, 3);
+
+-- Peuplement de la table Candidatures
+INSERT INTO Candidatures (Date_Candidature, CV_Chemin, Chemin_Lettre_Motivation, ID_Offre, ID_User) VALUES
+('2025-03-10', '/cv/alice_dupont.pdf', '/lettres/alice_dupont.pdf', 1, 1),
+('2025-03-12', '/cv/bob_martin.pdf', NULL, 2, 2);
+
+-- Peuplement de la table WishLists
+INSERT INTO WishLists (ID_User, ID_Offre) VALUES
+(1, 2),
+(2, 1);
+
+-- Peuplement de la table Evaluations
+INSERT INTO Evaluations (Note, Commentaire, ID_User, ID_Entreprise) VALUES
+(5, 'Excellente entreprise avec une vision claire.', 1, 1),
+(4, 'Projets intéressants mais communication à améliorer.', 2, 2),
+(3, 'Bonne expérience globale, mais quelques points à revoir.', 1, 3); 
